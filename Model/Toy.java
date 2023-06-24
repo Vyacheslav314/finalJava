@@ -22,7 +22,7 @@ public class Toy implements Serializable {
     public Toy() {
         this.uid = CreateUid.newUid();
         System.out.println("Введите название игрушки");
-        this.name = scanner.nextLine();
+        this.name = scanner.next();
         System.out.println("Укажите сколько игрушек в наличии");
         this.quantity = scanner.nextInt();
         this.chance = 0.0;

@@ -15,9 +15,14 @@ public class DrawQueue {
         drawToys.add(obj);
     }
 
-    // public void removeQueueToys(String uid) {
-    //     drawToys.remove(uid);
-    // }
+    public Toy removeQueueToys() {
+        return drawToys.remove();
+    }
 
+    public void showQueue() {
+        for (Toy toy : drawToys) {
+            System.out.println(toy);
+        }
+    }
 
 }

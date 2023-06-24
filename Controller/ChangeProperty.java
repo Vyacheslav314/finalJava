@@ -14,4 +14,13 @@ public class ChangeProperty {
             index++;
         }
     }
+
+    public static void changeQuantity(List<Toy> ware, String uid) {
+        for(Toy toy: ware) {
+            if(toy.getUid() == uid) {
+                toy.setQuantity(toy.getQuantity() - 1);
+            }
+        }
+    }
+    
 }
