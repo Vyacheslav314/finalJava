@@ -15,10 +15,6 @@ public class WareHouse {
         listToy.add(obj);
     }
 
-    // public void removeToy(String uid) {
-
-    // }
-
     public void showToys() {
         int count = 0;
         for (Toy toy : listToy) {

@@ -33,7 +33,7 @@ public class Menu {
             int command = scanner.nextInt();
             switch(command) {
                 case 1:
-                
+                Logging.log.info("Запрос: список игрушек!!!");
                 ware.showToys();
                 break;
                 case 2:
@@ -48,12 +48,14 @@ public class Menu {
                 Logging.log.info("Игрушка\n" + newDrawToy + "\nРозыгранна и добавленна в очередь на выдачу");
                 break;
                 case 4:
+                Logging.log.info("Запрос: очередь выдачи!!!");
                 draw.showQueue();
                 break;
                 case 5:
                 try {
                     Toy drawToy = draw.removeQueueToys();
                     SaveDrawToy.writeDrawToy(drawToy);
+                    ChangeProperty.changeQuantity(ware.getWareToys(), drawToy.getUid());
                     Logging.log.info("Игрушка " + drawToy.getName() + " выданна");
                 } catch (Exception e) {
                     System.out.println("Очередь пуста!!");
