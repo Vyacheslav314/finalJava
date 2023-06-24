@@ -1,0 +1,120 @@
+# создание директорий
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo mkdir Игрушки_для_школьников
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo mkdir Игрушки_для_дошколят
+# Результат
+drwxr-xr-x  2 root       root       4096 июн 25 00:01  Игрушки_для_школьников
+drwxr-xr-x  2 root       root       4096 июн 25 00:03  Игрушки_для_дошколят
+
+
+
+# Создайте в директории «Игрушки для школьников» текстовые файлы
+#  - «Роботы», «Конструктор», «Настольные игры»
+vyacheslav@vyacheslav-VirtualBox:/home$ cd Игрушки_для_школьников
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки_для_школьников$ sudo touch Роботы.txt
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки_для_школьников$ sudo touch Конструктор.txt
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки_для_школьников$ sudo touch Настольные_игры.txt
+# Результат
+-rw-r--r-- 1 root root    0 июн 25 00:06 Конструктор.txt
+-rw-r--r-- 1 root root    0 июн 25 00:06 Настольные_игры.txt
+-rw-r--r-- 1 root root    0 июн 25 00:05 Роботы.txt
+
+# Создайте в директории «Игрушки для дошколят» текстовые файлы
+# «Мягкие игрушки», «Куклы», «Машинки»
+vyacheslav@vyacheslav-VirtualBox:/home$ cd Игрушки_для_дошколят
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки_для_дошколят$ sudo touch Мягкие_игрушки.txt
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки_для_дошколят$ sudo touch Куклы.txt
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки_для_дошколят$ sudo touch Машинки.txt
+
+# Результат
+-rw-r--r-- 1 root root    0 июн 25 00:09 Куклы.txt
+-rw-r--r-- 1 root root    0 июн 25 00:09 Машинки.txt
+-rw-r--r-- 1 root root    0 июн 25 00:09 Мягкие_игрушки.txt
+
+
+# Объединить 2 директории в одну «Имя Игрушки»
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo mkdir Имя_игрушки
+drwxr-xr-x  2 root       root       4096 июн 25 00:57  Имя_игрушки
+
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo cp -r Игрушки_для_школьников/* Имя_игрушки
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo cp -r Игрушки_для_дошколят/* Имя_игрушки
+
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo rm -r Игрушки_для_школьников
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo rm -r Игрушки_для_дошколят
+
+# Результат
+vyacheslav@vyacheslav-VirtualBox:/home$ cd Имя_игрушки
+vyacheslav@vyacheslav-VirtualBox:/home/Имя_игрушки$ ls -al
+итого 8
+drwxr-xr-x 2 root root 4096 июн 25 01:05 .
+drwxr-xr-x 7 root root 4096 июн 25 01:06 ..
+-rw-r--r-- 1 root root    0 июн 25 01:05 Конструктор.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Куклы.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Машинки.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Мягкие_игрушки.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Настольные_игры.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Роботы.txt
+
+# Переименовать директорию «Имя Игрушки» в «Игрушки»
+vyacheslav@vyacheslav-VirtualBox:/home$ sudo mv Имя_игрушки Игрушки
+drwxr-xr-x  2 root       root       4096 июн 25 01:05  Игрушки
+
+# Просмотреть содержимое каталога «Игрушки».
+vyacheslav@vyacheslav-VirtualBox:/home$ cd Игрушки
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки$ ls -al
+
+# Результат
+drwxr-xr-x 2 root root 4096 июн 25 01:05 .
+drwxr-xr-x 7 root root 4096 июн 25 01:11 ..
+-rw-r--r-- 1 root root    0 июн 25 01:05 Конструктор.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Куклы.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Машинки.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Мягкие_игрушки.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Настольные_игры.txt
+-rw-r--r-- 1 root root    0 июн 25 01:05 Роботы.txt
+
+#  Установить и удалить snap-пакет. (Любой, какой хотите)
+vyacheslav@vyacheslav-VirtualBox:/$ sudo snap list
+Название                   Версия            Правка  Канал            Издатель    Примечание
+bare                       1.0               5       latest/stable    canonical✓  base
+core20                     20230613          1950    latest/stable    canonical✓  base
+core22                     20230612          766     latest/stable    canonical✓  base
+firefox                    113.0.1-1         2667    latest/stable/…  mozilla✓    -
+gnome-3-38-2004            0+git.6f39565     140     latest/stable/…  canonical✓  -
+gnome-42-2204              0+git.ff35a85     111     latest/stable    canonical✓  -
+gtk-common-themes          0.1-81-g442e511   1535    latest/stable/…  canonical✓  -
+snap-store                 41.3-71-g709398e  959     latest/stable/…  canonical✓  -
+snapd                      2.59.5            19457   latest/stable    canonical✓  snapd
+snapd-desktop-integration  0.9               83      latest/stable/…  canonical✓  -
+
+vyacheslav@vyacheslav-VirtualBox:/$ sudo snap install gimp
+vyacheslav@vyacheslav-VirtualBox:/$ sudo snap list
+Название                   Версия            Правка  Канал            Издатель       Примечание
+bare                       1.0               5       latest/stable    canonical✓     base
+core                       16-2.59.4         15419   latest/stable    canonical✓     core
+core20                     20230613          1950    latest/stable    canonical✓     base
+core22                     20230612          766     latest/stable    canonical✓     base
+firefox                    113.0.1-1         2667    latest/stable/…  mozilla✓       -
+gimp                       2.10.30           393     latest/stable    snapcrafters✪  -
+gnome-3-38-2004            0+git.6f39565     140     latest/stable/…  canonical✓     -
+gnome-42-2204              0+git.ff35a85     111     latest/stable    canonical✓     -
+gtk-common-themes          0.1-81-g442e511   1535    latest/stable/…  canonical✓     -
+gtk2-common-themes         0.1               13      latest/stable    canonical✓     -
+snap-store                 41.3-71-g709398e  959     latest/stable/…  canonical✓     -
+snapd                      2.59.5            19457   latest/stable    canonical✓     snapd
+snapd-desktop-integration  0.9               83      latest/stable/…  canonical✓     -
+
+
+#удаляем
+vyacheslav@vyacheslav-VirtualBox:/$ sudo snap remove gimp
+gimp удалён
+
+#   Добавить произвольную задачу для выполнения каждые 3 минуты 
+# (Например, запись в текстовый файл чего-то или копирование из каталога А в каталог Б).
+
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки$ crontab -e
+crontab: installing new crontab
+vyacheslav@vyacheslav-VirtualBox:/home/Игрушки$ crontab -l
+*/3 * * * * echo 'hi mate' >> /home/Игрушки/Роботы.txt
+
+
+
