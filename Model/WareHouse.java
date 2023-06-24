@@ -1,31 +1,35 @@
 package Model;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+import java.util.List;
 
 public class WareHouse {
-
-    public static void serializable(Toy objecToy) throws IOException {
-
-       FileOutputStream outputStream = new FileOutputStream("wareHouse.ser");
-       ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-
-       objectOutputStream.writeObject(objecToy);
-
-       objectOutputStream.close();
-    }
-
-    public static void deSerializable() throws IOException, ClassNotFoundException {
-
-       FileInputStream fileInputStream = new FileInputStream("wareHouse.ser");
-       ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream); 
-        Toy wToy = (Toy) objectInputStream.readObject();
-
-           System.out.println(wToy);
     
+    public List<Toy> listToy;
+
+    public WareHouse() {
+        this.listToy = new LinkedList<>();
     }
 
+    public void addToy(Toy obj) {
+        listToy.add(obj);
+    }
+
+    // public void removeToy(String uid) {
+
+    // }
+
+    public void showToys() {
+        int count = 0;
+        for (Toy toy : listToy) {
+            System.out.println(toy);
+            count++;
+        }
+        System.out.printf("Результат поиска %d совпадений \n\n", count);
+    }
+
+
+    public List<Toy> getWareToys() {
+        return listToy;
+    }
 }
