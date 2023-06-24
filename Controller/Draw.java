@@ -28,7 +28,7 @@ public class Draw {
             count += quantity.get(i);
         }
         Random random = new Random();
-        int index = random.nextInt(count); // Выбираем случайный индекс из воображаемого массива
+        int index = random.nextInt(count); 
         int i = 0;
         for(Toy toy: ware) {
             index -= quantity.get(i);

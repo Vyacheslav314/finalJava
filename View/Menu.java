@@ -11,9 +11,10 @@ public class Menu {
     static Scanner scanner = new Scanner(System.in);
     
     public static void menu() {
-        Toy softToy1 = new Toy(CreateUid.newUid(), "Bear", 20, 0.0);
+
+        Toy softToy1 = new Toy(CreateUid.newUid(), "Bear", 20, 0.0);   // Зарание добавленные игрушки
         Toy softToy2 = new Toy(CreateUid.newUid(), "rabbit", 70, 0.0);
-        Logging.someMethod();
+        Logging.someMethod(); // инициализация логера
         WareHouse ware = new WareHouse();
         DrawQueue draw = new DrawQueue();
         ware.addToy(softToy1);
@@ -24,27 +25,28 @@ public class Menu {
         boolean isValid = true;
         while (isValid) {
 
-            List<String> a = Draw.getNameToys(ware.getWareToys());
-            List<Integer> b = Draw.getQuantityToys(ware.getWareToys());
-            List<Double> c = Draw.calculatingСhance(a, b);
-            ChangeProperty.changeChance(ware.getWareToys(), c);
+            List<String> a = Draw.getNameToys(ware.getWareToys());  // Получение списка игрушек
+            List<Integer> b = Draw.getQuantityToys(ware.getWareToys()); // Получение списка количества игрушек
+            List<Double> c = Draw.calculatingСhance(a, b);  // получение шанса основанный на типах игрушек и их количестве
+            ChangeProperty.changeChance(ware.getWareToys(), c); // изменение шанса
 
             System.out.println("Введите команду:\n1.Показать список игрушек\n2.Добавить игрушку\n3.Розыграть игрушку\n4.Показать игрушки ожидающие выдачи\n5.Забрать выйгрыш\n6.Завершить работу");
-            int command = scanner.nextInt();
+            int command = scanner.nextInt(); 
+
             switch(command) {
                 case 1:
                 Logging.log.info("Запрос: список игрушек!!!");
                 ware.showToys();
                 break;
                 case 2:
-                Toy newToy = new Toy();
-                ware.addToy(newToy);
+                Toy newToy = new Toy(); // создаем новую игрушку
+                ware.addToy(newToy); //добавляем ее в список
                 Logging.log.info("Создана новая игрушка!!!");
                 break;
                 case 3:
                 Logging.log.info("Запущен розыгрыш!!!");
-                Toy newDrawToy = Draw.drawToy(ware.getWareToys(), b);
-                draw.addQueueToys(newDrawToy);
+                Toy newDrawToy = Draw.drawToy(ware.getWareToys(), b); // получаем выйграную игрушку
+                draw.addQueueToys(newDrawToy); // добавляем в очередь
                 Logging.log.info("Игрушка\n" + newDrawToy + "\nРозыгранна и добавленна в очередь на выдачу");
                 break;
                 case 4:
@@ -53,9 +55,9 @@ public class Menu {
                 break;
                 case 5:
                 try {
-                    Toy drawToy = draw.removeQueueToys();
-                    SaveDrawToy.writeDrawToy(drawToy);
-                    ChangeProperty.changeQuantity(ware.getWareToys(), drawToy.getUid());
+                    Toy drawToy = draw.removeQueueToys(); // сохраняем удаленную игрушку
+                    SaveDrawToy.writeDrawToy(drawToy); // сохраняем название игрушки в файл
+                    ChangeProperty.changeQuantity(ware.getWareToys(), drawToy.getUid()); // находим игрушку по uid и уменьшаем количество на 1
                     Logging.log.info("Игрушка " + drawToy.getName() + " выданна");
                 } catch (Exception e) {
                     System.out.println("Очередь пуста!!");
