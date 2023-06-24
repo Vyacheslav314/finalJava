@@ -16,12 +16,13 @@ public class DrawQueue {
     }
 
     public Toy removeQueueToys() {
-        return drawToys.remove();
+        return drawToys.poll(); 
     }
 
     public void showQueue() {
         for (Toy toy : drawToys) {
             System.out.println(toy);
+            System.out.println("=================================");
         }
     }
 

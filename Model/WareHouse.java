@@ -23,6 +23,7 @@ public class WareHouse {
         int count = 0;
         for (Toy toy : listToy) {
             System.out.println(toy);
+            System.out.println("=================================");
             count++;
         }
         System.out.printf("Результат поиска %d совпадений \n\n", count);
